@@ -1,0 +1,1479 @@
+Started GET "/" for 127.0.0.1 at 2024-03-26 22:56:51 -0300
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | Allocations: 376)
+Completed 200 OK in 69ms (Views: 20.6ms | ActiveRecord: 0.0ms | Allocations: 8809)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (6.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-03-27 02:15:43.485840', '2024-03-27 02:15:43.485843') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateShorts (20240327021411)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "shortened_link" varchar, "token" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240327021411') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-03-26 23:47:33 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.1ms | Allocations: 376)
+Completed 200 OK in 29ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 4854)
+
+
+Started GET "/shorten" for 127.0.0.1 at 2024-03-26 23:47:40 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/shorten"):
+  
+Started GET "/shortened/kekw" for 127.0.0.1 at 2024-03-26 23:48:02 -0300
+  
+ActionController::RoutingError (uninitialized constant ShortenersController):
+  
+Started GET "/shortened/kekw" for 127.0.0.1 at 2024-03-26 23:49:18 -0300
+Processing by ShortenerController#send_to_original as HTML
+  Parameters: {"shortened_link"=>"kekw"}
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms | Allocations: 7197)
+
+
+  
+NameError (undefined local variable or method `short_params' for #<ShortenerController:0x0000000000e0b0>):
+  
+app/controllers/shortener_controller.rb:13:in `send_to_original'
+Started GET "/shortened/kekw" for 127.0.0.1 at 2024-03-26 23:50:01 -0300
+Processing by ShortenerController#send_to_original as HTML
+  Parameters: {"shortened_link"=>"kekw"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 935)
+
+
+  
+NameError (undefined local variable or method `shortened_link' for #<ShortenerController:0x00000000011648>):
+  
+app/controllers/shortener_controller.rb:13:in `send_to_original'
+Started GET "/shortened/kekw" for 127.0.0.1 at 2024-03-26 23:50:32 -0300
+Processing by ShortenerController#send_to_original as HTML
+  Parameters: {"shortened_link"=>"kekw"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE (http://127.0.0.1:3000/shorten) LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shortener_controller.rb:13:in `send_to_original'
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 1.8ms | Allocations: 6171)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: unrecognized token: ":"):
+  
+Started POST "/shorten" for 127.0.0.1 at 2024-03-26 23:57:15 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"token"=>"[FILTERED]", "shortener"=>{"token"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms | Allocations: 511)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:293:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:388:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:377:in `verify_authenticity_token'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:202:in `block (2 levels) in halting'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:203:in `block in halting'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:119:in `block in run_callbacks'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.2) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.2) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.0.10) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.0.10) lib/rack/etag.rb:29:in `call'
+rack (3.0.10) lib/rack/conditional_get.rb:43:in `call'
+rack (3.0.10) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.2) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.10) lib/rack/method_override.rb:28:in `call'
+rack (3.0.10) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-26 23:57:55 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"shortened_link"=>"keke", "token"=>"[FILTERED]", "shortener"=>{"shortened_link"=>"keke", "token"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 452)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:293:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:388:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:377:in `verify_authenticity_token'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:202:in `block (2 levels) in halting'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:203:in `block in halting'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:119:in `block in run_callbacks'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.2) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.2) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.0.10) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.0.10) lib/rack/etag.rb:29:in `call'
+rack (3.0.10) lib/rack/conditional_get.rb:43:in `call'
+rack (3.0.10) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.2) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.10) lib/rack/method_override.rb:28:in `call'
+rack (3.0.10) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-26 23:58:15 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"shortened_link"=>"keke", "token"=>"[FILTERED]", "shortener"=>{"shortened_link"=>"keke", "token"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms | Allocations: 451)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:293:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:388:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:377:in `verify_authenticity_token'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:202:in `block (2 levels) in halting'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:203:in `block in halting'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:119:in `block in run_callbacks'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.2) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.2) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.0.10) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.0.10) lib/rack/etag.rb:29:in `call'
+rack (3.0.10) lib/rack/conditional_get.rb:43:in `call'
+rack (3.0.10) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.2) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.10) lib/rack/method_override.rb:28:in `call'
+rack (3.0.10) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-26 23:58:18 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"shortened_link"=>"keke", "token"=>"[FILTERED]", "shortener"=>{"shortened_link"=>"keke", "token"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms | Allocations: 451)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:293:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:388:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:377:in `verify_authenticity_token'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:202:in `block (2 levels) in halting'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:203:in `block in halting'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:119:in `block in run_callbacks'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.2) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.2) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.0.10) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.0.10) lib/rack/etag.rb:29:in `call'
+rack (3.0.10) lib/rack/conditional_get.rb:43:in `call'
+rack (3.0.10) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.2) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.10) lib/rack/method_override.rb:28:in `call'
+rack (3.0.10) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-26 23:58:46 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"shortened_link"=>"keke", "shortener"=>{"shortened_link"=>"keke"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms | Allocations: 451)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:293:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:388:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:377:in `verify_authenticity_token'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:202:in `block (2 levels) in halting'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:203:in `block in halting'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:119:in `block in run_callbacks'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.2) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.2) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.0.10) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.0.10) lib/rack/etag.rb:29:in `call'
+rack (3.0.10) lib/rack/conditional_get.rb:43:in `call'
+rack (3.0.10) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.2) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.10) lib/rack/method_override.rb:28:in `call'
+rack (3.0.10) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateShorts (20240327021411)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "shorts"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20240327021411'[0m
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateShorts (20240327021411)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "shorts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "shortened_link" varchar, "original_link" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240327021411') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:03:13 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 648)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:293:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:388:in `handle_unverified_request'
+actionpack (7.1.3.2) lib/action_controller/metal/request_forgery_protection.rb:377:in `verify_authenticity_token'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:202:in `block (2 levels) in halting'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:203:in `block in halting'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:119:in `block in run_callbacks'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.2) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.2) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.2) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.2) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.2) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.2) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.2) lib/action_dispatch/routing/route_set.rb:882:in `call'
+rack (3.0.10) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.0.10) lib/rack/etag.rb:29:in `call'
+rack (3.0.10) lib/rack/conditional_get.rb:43:in `call'
+rack (3.0.10) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.2) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.2) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.2) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.10) lib/rack/method_override.rb:28:in `call'
+rack (3.0.10) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.10) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.2) lib/puma/configuration.rb:272:in `call'
+puma (6.4.2) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.2) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.2) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.2) lib/puma/server.rb:464:in `process_client'
+puma (6.4.2) lib/puma/server.rb:245:in `block in run'
+puma (6.4.2) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:06:19 -0300
+  
+NoMethodError (undefined method `skip_before_filter' for ShortenerController:Class):
+  
+app/controllers/shortener_controller.rb:2:in `<class:ShortenerController>'
+app/controllers/shortener_controller.rb:1:in `<main>'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:06:37 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:06:37.244554"], ["updated_at", "2024-03-27 03:06:37.244554"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 9.1ms | Allocations: 18969)
+
+
+  
+NoMethodError (undefined method `short_url' for #<ShortenerController:0x00000000011300>):
+  
+app/controllers/shortener_controller.rb:7:in `create'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:07:49 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:07:50.137640"], ["updated_at", "2024-03-27 03:07:50.137640"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 9.1ms | Allocations: 5591)
+
+
+  
+NoMethodError (undefined method `short_url' for #<ShortenerController:0x000000000148c0>):
+  
+app/controllers/shortener_controller.rb:7:in `create'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:08:45 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:08:45.469816"], ["updated_at", "2024-03-27 03:08:45.469816"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 8.4ms | Allocations: 5419)
+
+
+  
+NameError (undefined local variable or method `json' for #<ShortenerController:0x00000000017ed0>):
+  
+app/controllers/shortener_controller.rb:7:in `create'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:08:58 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:08:58.828076"], ["updated_at", "2024-03-27 03:08:58.828076"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 8.3ms | Allocations: 6235)
+
+
+  
+ActionView::MissingTemplate (Missing template shortener/create, application/create with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :vcf, :vtt, :png, :jpeg, :gif, :bmp, :tiff, :svg, :webp, :mpeg, :mp3, :ogg, :m4a, :webm, :mp4, :otf, :ttf, :woff, :woff2, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip, :gzip, :turbo_stream], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "F:/dev/ruby/rails/shortener/app/views"
+  * "C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/turbo-rails-2.0.5/app/views"
+  * "C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/actiontext-7.1.3.2/app/views"
+  * "C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/actionmailbox-7.1.3.2/app/views"
+):
+  
+app/controllers/shortener_controller.rb:7:in `create'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:09:22 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:09:23.024370"], ["updated_at", "2024-03-27 03:09:23.024370"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+No template found for ShortenerController#create, rendering head :no_content
+Completed 204 No Content in 20ms (ActiveRecord: 9.4ms | Allocations: 5449)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:09:38 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:09:38.929863"], ["updated_at", "2024-03-27 03:09:38.929863"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+No template found for ShortenerController#create, rendering head :no_content
+Completed 204 No Content in 21ms (ActiveRecord: 8.3ms | Allocations: 5343)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:09:48 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (1.2ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:09:48.447778"], ["updated_at", "2024-03-27 03:09:48.447778"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 8.9ms | Allocations: 6144)
+
+
+  
+ActionView::MissingTemplate (Missing template shortener/bomdia, application/bomdia with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :vcf, :vtt, :png, :jpeg, :gif, :bmp, :tiff, :svg, :webp, :mpeg, :mp3, :ogg, :m4a, :webm, :mp4, :otf, :ttf, :woff, :woff2, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip, :gzip, :turbo_stream], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "F:/dev/ruby/rails/shortener/app/views"
+  * "C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/turbo-rails-2.0.5/app/views"
+  * "C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/actiontext-7.1.3.2/app/views"
+  * "C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/actionmailbox-7.1.3.2/app/views"
+):
+  
+app/controllers/shortener_controller.rb:7:in `create'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:10:55 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:10:55.954470"], ["updated_at", "2024-03-27 03:10:55.954470"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 3)
+Completed 200 OK in 23ms (Views: 5.7ms | ActiveRecord: 10.2ms | Allocations: 5674)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:11:18 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:11:18.534400"], ["updated_at", "2024-03-27 03:11:18.534400"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+No template found for ShortenerController#create, rendering head :no_content
+Completed 204 No Content in 21ms (ActiveRecord: 8.4ms | Allocations: 5352)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:11:27 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:11:27.991561"], ["updated_at", "2024-03-27 03:11:27.991561"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+No template found for ShortenerController#create, rendering head :no_content
+Completed 204 No Content in 22ms (ActiveRecord: 9.9ms | Allocations: 5347)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:11:49 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:11:49.298895"], ["updated_at", "2024-03-27 03:11:49.298895"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+No template found for ShortenerController#create, rendering head :no_content
+Completed 204 No Content in 22ms (ActiveRecord: 9.6ms | Allocations: 5320)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:12:16 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:12:17.086620"], ["updated_at", "2024-03-27 03:12:17.086620"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 18ms (Views: 1.5ms | ActiveRecord: 9.2ms | Allocations: 5388)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:12:28 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:12:29.001845"], ["updated_at", "2024-03-27 03:12:29.001845"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 17ms (Views: 1.2ms | ActiveRecord: 8.8ms | Allocations: 5341)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:22:55 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mShort Create (2.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", nil], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:22:55.573859"], ["updated_at", "2024-03-27 03:22:55.573859"]]
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:6:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 19ms (Views: 1.8ms | ActiveRecord: 8.9ms | Allocations: 5028)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:23:01 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 1.6ms | Allocations: 3927)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/shortener_controller.rb:4:in `create'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:24:35 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 1.6ms | Allocations: 3922)
+
+
+  
+NameError (undefined local variable or method `original_link' for #<ShortenerController:0x00000000042fe0>):
+  
+app/controllers/shortener_controller.rb:5:in `create'
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:24:49 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "buceta"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:24:50.085683"], ["updated_at", "2024-03-27 03:24:50.085683"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 18ms (Views: 1.3ms | ActiveRecord: 9.0ms | Allocations: 5418)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:25:05 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "jh1ivu7n"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:25:05.218221"], ["updated_at", "2024-03-27 03:25:05.218221"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 18ms (Views: 1.3ms | ActiveRecord: 8.7ms | Allocations: 5434)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:39 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "6c06qtuc"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:39.540983"], ["updated_at", "2024-03-27 03:26:39.540983"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 19ms (Views: 1.2ms | ActiveRecord: 9.0ms | Allocations: 5416)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:40 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "0zy4r3m9"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:40.332193"], ["updated_at", "2024-03-27 03:26:40.332193"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.1ms | Allocations: 1598)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:40 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "40gfd336"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:40.872576"], ["updated_at", "2024-03-27 03:26:40.872576"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.1ms | Allocations: 1550)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:41 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "uhqx34vf"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:41.502770"], ["updated_at", "2024-03-27 03:26:41.502770"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 1.0ms | Allocations: 1598)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:41 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "re9wzhab"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:41.783888"], ["updated_at", "2024-03-27 03:26:41.783888"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.1ms | Allocations: 1598)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:42 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "zrzlm3s4"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:42.075670"], ["updated_at", "2024-03-27 03:26:42.075670"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 1598)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:47 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "jqhqb50i"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:47.974119"], ["updated_at", "2024-03-27 03:26:47.974119"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 20ms (Views: 1.3ms | ActiveRecord: 8.9ms | Allocations: 5469)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:48 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "ublya5eg"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:48.533789"], ["updated_at", "2024-03-27 03:26:48.533789"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 0.9ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:48 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "sd5hjnu3"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:48.781438"], ["updated_at", "2024-03-27 03:26:48.781438"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.1ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:49 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "45o4mvtx"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:49.107353"], ["updated_at", "2024-03-27 03:26:49.107353"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 0.9ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:49 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "y7vddrs0"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:49.312038"], ["updated_at", "2024-03-27 03:26:49.312038"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 1548)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:49 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "lm33f36h"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:49.486342"], ["updated_at", "2024-03-27 03:26:49.486342"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.1ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:49 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "wxnykshq"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:49.709183"], ["updated_at", "2024-03-27 03:26:49.709183"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.0ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:49 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.1ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "7jxgemu8"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:49.831173"], ["updated_at", "2024-03-27 03:26:49.831173"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.2ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:49 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "8j3nv7ny"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:50.015808"], ["updated_at", "2024-03-27 03:26:50.015808"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.0ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:50 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "f5thz9xq"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:50.124043"], ["updated_at", "2024-03-27 03:26:50.124043"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 1599)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:50 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "wmbjnriq"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:50.311987"], ["updated_at", "2024-03-27 03:26:50.311987"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 0.9ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:50 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.2ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "8danjp5h"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:50.513959"], ["updated_at", "2024-03-27 03:26:50.513959"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 1.3ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:50 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "wc85j5rq"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:50.716674"], ["updated_at", "2024-03-27 03:26:50.716674"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.1ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:50 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "80kzraui"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:50.903485"], ["updated_at", "2024-03-27 03:26:50.903485"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 1.1ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:50 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "8ufqvzcq"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:51.034561"], ["updated_at", "2024-03-27 03:26:51.034561"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 10ms (Views: 0.9ms | ActiveRecord: 1.2ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:51 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "vm06ezwn"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:51.228771"], ["updated_at", "2024-03-27 03:26:51.228771"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.1ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:51 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.5ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "uuknb7ia"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:51.354158"], ["updated_at", "2024-03-27 03:26:51.354158"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 1.8ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:51 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "9wjrt370"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:51.528971"], ["updated_at", "2024-03-27 03:26:51.528971"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.1ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:51 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "w71r13pz"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:51.710514"], ["updated_at", "2024-03-27 03:26:51.710514"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.1ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:51 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.1ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "m3qkzr2f"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:51.887341"], ["updated_at", "2024-03-27 03:26:51.887341"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 1.2ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:52 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "inarvdqo"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:52.089592"], ["updated_at", "2024-03-27 03:26:52.089592"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:52 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "izp5fpr0"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:52.201047"], ["updated_at", "2024-03-27 03:26:52.201047"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:52 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "8pk24cxr"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:52.374371"], ["updated_at", "2024-03-27 03:26:52.374371"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.0ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:52 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "pmxf8k7c"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:52.563367"], ["updated_at", "2024-03-27 03:26:52.563367"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 0.9ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:52 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "hqwf7ny5"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:52.751247"], ["updated_at", "2024-03-27 03:26:52.751247"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 0.9ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:52 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.9ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "fi7guctj"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:52.954849"], ["updated_at", "2024-03-27 03:26:52.954849"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.0ms | Allocations: 1596)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 00:26:53 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (0.8ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "9r6lggsm"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 03:26:53.054103"], ["updated_at", "2024-03-27 03:26:53.054103"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.9ms | Allocations: 1548)
+
+
+Started GET "/shortened/9r6lggsm" for 127.0.0.1 at 2024-03-27 00:27:36 -0300
+Processing by ShortenerController#send_to_original as HTML
+  Parameters: {"shortened_link"=>"9r6lggsm"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 505)
+
+
+  
+NameError (undefined local variable or method `shortened_link' for #<ShortenerController:0x00000000051428>):
+  
+app/controllers/shortener_controller.rb:16:in `send_to_original'
+Started GET "/shortened/9r6lggsm" for 127.0.0.1 at 2024-03-27 00:28:23 -0300
+Processing by ShortenerController#send_to_original as HTML
+  Parameters: {"shortened_link"=>"9r6lggsm"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 992)
+
+
+  
+NameError (undefined local variable or method `shortened_link' for #<ShortenerController:0x00000000054ce0>):
+  
+app/controllers/shortener_controller.rb:16:in `send_to_original'
+Started GET "/shortened/9r6lggsm" for 127.0.0.1 at 2024-03-27 00:29:25 -0300
+Processing by ShortenerController#send_to_original as HTML
+  Parameters: {"shortened_link"=>"9r6lggsm"}
+  [1m[36mShort Load (0.2ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortened_link" = ? LIMIT ?[0m  [["shortened_link", "9r6lggsm"], ["LIMIT", 1]]
+  ↳ app/controllers/shortener_controller.rb:16:in `send_to_original'
+Redirected to 
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.6ms | Allocations: 7653)
+
+
+  
+ActionController::Redirecting::UnsafeRedirectError (Unsafe redirect to "https://www.youtube.com/watch?v=ZBs1a6Y25bY", pass allow_other_host: true to redirect anyway.):
+  
+app/controllers/shortener_controller.rb:19:in `send_to_original'
+Started GET "/shortened/9r6lggsm" for 127.0.0.1 at 2024-03-27 00:30:19 -0300
+Processing by ShortenerController#send_to_original as HTML
+  Parameters: {"shortened_link"=>"9r6lggsm"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortened_link" = ? LIMIT ?[0m  [["shortened_link", "9r6lggsm"], ["LIMIT", 1]]
+  ↳ app/controllers/shortener_controller.rb:16:in `send_to_original'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 1)
+Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 1.7ms | Allocations: 4473)
+
+
+Started GET "/shortened/9r6lggsm" for 127.0.0.1 at 2024-03-27 00:31:13 -0300
+Processing by ShortenerController#send_to_original as HTML
+  Parameters: {"shortened_link"=>"9r6lggsm"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortened_link" = ? LIMIT ?[0m  [["shortened_link", "9r6lggsm"], ["LIMIT", 1]]
+  ↳ app/controllers/shortener_controller.rb:16:in `send_to_original'
+Redirected to 
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.5ms | Allocations: 4592)
+
+
+  
+ActionController::Redirecting::UnsafeRedirectError (Unsafe redirect to "https://www.youtube.com/watch?v=ZBs1a6Y25bY", pass allow_other_host: true to redirect anyway.):
+  
+app/controllers/shortener_controller.rb:19:in `send_to_original'
+Started GET "/shortened/9r6lggsm" for 127.0.0.1 at 2024-03-27 00:32:00 -0300
+Processing by ShortenerController#send_to_original as HTML
+  Parameters: {"shortened_link"=>"9r6lggsm"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortened_link" = ? LIMIT ?[0m  [["shortened_link", "9r6lggsm"], ["LIMIT", 1]]
+  ↳ app/controllers/shortener_controller.rb:16:in `send_to_original'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.4ms | Allocations: 4483)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/shortener_controller.rb:19:in `send_to_original'
+Started GET "/shortened/9r6lggsm" for 127.0.0.1 at 2024-03-27 00:32:46 -0300
+Processing by ShortenerController#send_to_original as HTML
+  Parameters: {"shortened_link"=>"9r6lggsm"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortened_link" = ? LIMIT ?[0m  [["shortened_link", "9r6lggsm"], ["LIMIT", 1]]
+  ↳ app/controllers/shortener_controller.rb:16:in `send_to_original'
+Redirected to https://www.youtube.com/watch?v=ZBs1a6Y25bY
+Completed 302 Found in 10ms (ActiveRecord: 2.2ms | Allocations: 4160)
+
+
+Started GET "/" for 127.0.0.1 at 2024-03-27 01:15:53 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/Ruby32-x64/lib/ruby/gems/3.2.0/gems/railties-7.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | Allocations: 376)
+Completed 200 OK in 26ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 4854)
+
+
+Started POST "/shorten" for 127.0.0.1 at 2024-03-27 01:17:32 -0300
+Processing by ShortenerController#create as */*
+  Parameters: {"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY", "shortener"=>{"original_link"=>"https://www.youtube.com/watch?v=ZBs1a6Y25bY"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mShort Create (1.0ms)[0m  [1m[32mINSERT INTO "shorts" ("shortened_link", "original_link", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["shortened_link", "cdw5sq05"], ["original_link", "https://www.youtube.com/watch?v=ZBs1a6Y25bY"], ["created_at", "2024-03-27 04:17:32.951772"], ["updated_at", "2024-03-27 04:17:32.951772"]]
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/shortener_controller.rb:8:in `create'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 3)
+Completed 200 OK in 45ms (Views: 2.3ms | ActiveRecord: 8.9ms | Allocations: 17387)
+
+
+Started GET "/shortened/cdw5sq05" for 127.0.0.1 at 2024-03-27 01:17:53 -0300
+Processing by ShortenerController#send_to_original as HTML
+  Parameters: {"original_link"=>"cdw5sq05"}
+  [1m[36mShort Load (0.1ms)[0m  [1m[34mSELECT "shorts".* FROM "shorts" WHERE "shorts"."shortened_link" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/shortener_controller.rb:16:in `send_to_original'
+Redirected to https://www.youtube.com/watch?v=ZBs1a6Y25bY
+Completed 302 Found in 16ms (ActiveRecord: 0.1ms | Allocations: 3080)
+
+
